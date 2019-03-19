@@ -23,21 +23,19 @@ class App extends Component {
       super(props);
       this.state = {
          firebase: firebase
-
       };
-
     }  //end constructor
 
 
   render() {
     return (
       <div className="App">Bloc Chat
-         <RoomList firebase={firebase}  />
+         <ul>
+            <RoomList firebase={firebase} />
+         </ul>
       </div>
-
     );// close return
   }//close render
 }//close component
-
 
 export default App;
