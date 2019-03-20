@@ -24,11 +24,16 @@ class RoomList extends Component {
 
    }
    render() {
-     console.log(this.state.rooms && this.state.rooms.length && this.state.rooms[0].key);
-      //return <li>{console.log(this.state.rooms && this.state.rooms.length && this.state.rooms[0].key)}hello from RoomList</li>;
-       //return <li>hello there from RoomList</li>;
-       return <li>{this.state.rooms[0].key}</li>;
+
+      return (
+          {this.state.rooms.map(room, index) => {
+             return  <li key = {index}>{room.name}</li>
+
+          }
+      );
+
    }
+  }
 } //end class declaration
 
 export default RoomList;

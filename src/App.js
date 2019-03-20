@@ -22,8 +22,10 @@ class App extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         firebase: firebase
+         firebase: firebase,
+         testValue: 10
       };
+      console.log(this.state.testValue)
     }  //end constructor
 
 
@@ -31,7 +33,7 @@ class App extends Component {
     return (
       <div className="App">Bloc Chat
          <ul>
-            <RoomList firebase={firebase} />
+            <RoomList firebase={firebase} testValue = {this.props.testValue}/>
          </ul>
       </div>
     );// close return
