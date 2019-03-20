@@ -15,16 +15,20 @@ class RoomList extends Component {
      room.key = snapshot.key;
      this.setState({ rooms: this.state.rooms.concat( room ) })
     });
+    console.log(this.state.rooms && this.state.rooms.length && this.state.rooms[0].key);
+   }
+
+   componentWillUnmount(){
+
+
+
    }
    render() {
-      console.log(this.state.rooms[0].key);
-
-      return (
-         <span> Hello from RoomList</span>
-
-
-    );
-  }
+     console.log(this.state.rooms && this.state.rooms.length && this.state.rooms[0].key);
+      //return <li>{console.log(this.state.rooms && this.state.rooms.length && this.state.rooms[0].key)}hello from RoomList</li>;
+       //return <li>hello there from RoomList</li>;
+       return <li>{this.state.rooms[0].key}</li>;
+   }
 } //end class declaration
 
 export default RoomList;
