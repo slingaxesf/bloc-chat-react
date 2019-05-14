@@ -59,13 +59,7 @@ class RoomList extends Component {
          <input type="text"  onChange={ (e) => this.handleChange(e) } />
             <input type="submit" />
       </form>
-
-
-
       </div>
-
-
-
     );
   }
 
