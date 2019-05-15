@@ -16,9 +16,10 @@ class RoomList extends Component {
 
     handleSubmit(e) {
        e.preventDefault();
+       if(!this.state.newRoom){return}
        this.createRoom(this.state.newRoom);
+       this.setState({ newRoom:  ''});
     }
-
 
   createRoom (newRoomName) {
    this.roomsRef.push({
@@ -36,11 +37,9 @@ class RoomList extends Component {
   }
 
   componentWillUnmount(){
-
-
-
   }
 
+//coomment 
   render() {
     let rooms  = this.state.rooms.map( (room, index) => {
       return <li key={index}>{room.name}</li>
@@ -56,7 +55,7 @@ class RoomList extends Component {
       })}
       */}
       <form onSubmit={ (e) => this.handleSubmit(e) }>
-         <input type="text"  onChange={ (e) => this.handleChange(e) } />
+         <input type="text" value= {this.state.newRoom} onChange={ (e) => this.handleChange(e) } />
             <input type="submit" />
       </form>
       </div>
