@@ -24,14 +24,15 @@ class App extends Component {
       super(props);
       this.state = {
          firebase: firebase,
-         activeRoom: "this is the active room"
+         activeRoom: "this is the active room",
+         testValue: ""
       };
-      
+
     }  //end constructor
 
   handleRoomClick(roomId){
 
-  this.setState({ activeRoom: roomId})
+   this.setState({testValue: 35});
 
   }
 
@@ -42,7 +43,7 @@ class App extends Component {
          <div id='chatroom-column'>
             <p>
                <ul>
-                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom}/>
+                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick = {this.handleRoomClick}/>
                </ul>
            </p>
          </div>
