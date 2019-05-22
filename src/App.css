@@ -31,3 +31,18 @@
     transform: rotate(360deg);
   }
 }
+
+
+#chatroom-column {
+   float: left;
+   padding-right: 20px;
+   width: 25%;
+   background-color: #eeeeee;
+   padding: 10px;
+
+}
+
+#room-messages-column  {
+   padding-left: 200px;
+   background-color: white;
+}
