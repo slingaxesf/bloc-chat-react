@@ -42,7 +42,7 @@ class RoomList extends Component {
 //coomment
   render() {
     let rooms  = this.state.rooms.map( (room, index) => {
-      return <li key={index} onClick = {this.props.handleRoomClick}>{room.name}</li>
+      return <li key={index} onClick = { this.props.handleRoomClick(room.key)}>{room.name}</li>
     });
 
     return (
@@ -62,6 +62,8 @@ class RoomList extends Component {
     );
   }
 
+
+//onClick = {() => this.props.handleRoomClick(55)
 } //end class declaration
 
 export default RoomList;

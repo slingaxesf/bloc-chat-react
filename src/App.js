@@ -22,19 +22,36 @@ import MessageList from './components/MessageList';
 class App extends Component {
    constructor(props) {
       super(props);
+      this.handleRoomClick = this.handleRoomClick.bind(this);
       this.state = {
          firebase: firebase,
-         activeRoom: "this is the active room",
+         activeRoom: "1",
          testValue: ""
       };
 
     }  //end constructor
 
-  handleRoomClick(roomId){
 
-   this.setState({testValue: 35});
+//  handleRoomClick(roomId){
+  //   let clickedRoom = roomId;
+  //   this.setState({activeRoom: clickedRoom});
+  //   console.log(this.state.activeRoom);
+//  }
+
+
+  handleRoomClick(index){
+
+  //  this.setState({ activeRoom: room });
+    console.log(index);
 
   }
+  componentDidMount(){}
+
+
+  componentWillUnmount(){}
+
+
+
 
   render() {
     return (
@@ -43,7 +60,7 @@ class App extends Component {
          <div id='chatroom-column'>
             <p>
                <ul>
-                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick = {this.handleRoomClick}/>
+                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick = {() => this.handleRoomClick(this.state.activeRooom)} />
                </ul>
            </p>
          </div>
