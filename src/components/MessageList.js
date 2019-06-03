@@ -4,8 +4,11 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: []
+      messages: [],
+      activeRoomMessages: []
     };
+    this.checkRoomId = this.checkRoomId.bind(this);
+    this.filterRoomId = this.filterRoomId.bind(this);
     this.messagesRef = this.props.firebase.database().ref('messages');
   }
 
@@ -15,17 +18,31 @@ class MessageList extends Component {
       message.key = snapshot.key;
       this.setState({ messages: this.state.messages.concat( message ) })
     });
-  }
-
-  filterRoomId (messages){
-
-     console.log (this.props.activeRoom);
-     console.log(messages);
 
   }
-//coomment
+
+  componentWillUnmount(){
+
+
+
+  }
+
+  checkRoomId(message){
+    console.log(12);
+    return message.roomId == this.props.activeRoom.key;
+  }
+
+  filterRoomId (){
+     console.log(this.props.activeRoom);
+     let newArray = [];
+     newArray = this.state.messages.filter(this.checkRoomId);
+     return newArray;
+  }
+//comment
   render() {
-    let messages  = this.state.messages.map( (message, index) => {
+    console.log("MessageList");
+
+    let messages  = this.filterRoomId().map( (message, index) => {
       return <li key={index}>{message.username}{message.roomId}{message.sentAt}{message.content}</li>
     });
 

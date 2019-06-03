@@ -39,10 +39,10 @@ class App extends Component {
 //  }
 
 
-  handleRoomClick(index){
-
-  //  this.setState({ activeRoom: room });
-    console.log(index);
+  handleRoomClick(room){
+  //const ii = index;
+    this.setState({ activeRoom: room });  //this line causes Maximum Update  Depth Exceeded
+    //console.log(room);
 
   }
   componentDidMount(){}
@@ -54,23 +54,24 @@ class App extends Component {
 
 
   render() {
+    console.log("App");
     return (
 
       <div className="App">Bloc Chat
          <div id='chatroom-column'>
-            <p>
+
                <ul>
-                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick = {() => this.handleRoomClick(this.state.activeRooom)} />
+                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick={this.handleRoomClick} />
                </ul>
-           </p>
+
          </div>
 
          <div id='room-messages-column'>
-         <p>
+
             <ul>
                <MessageList firebase={firebase} activeRoom = {this.state.activeRoom} />
             </ul>
-        </p>
+
          </div>
 
       </div>
