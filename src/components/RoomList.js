@@ -11,7 +11,7 @@ class RoomList extends Component {
   }
   handleChange(e) {
       this.setState({ newRoom: e.target.value });
-      console.log (e.target.value);
+      //console.log (e.target.value);
     }
 
     handleSubmit(e) {
@@ -25,8 +25,14 @@ class RoomList extends Component {
    this.roomsRef.push({
      name: newRoomName
    });
-
   }
+  handleRoomClick(room){
+  //console.log(room.key);
+  let i = room.key;
+  console.log(i);
+  this.props.handleRoomClick(i);
+  }
+
   componentDidMount() {
     this.roomsRef.on('child_added', snapshot => {
       const room = snapshot.val();
@@ -36,17 +42,16 @@ class RoomList extends Component {
 
   }
 
-  componentWillUnmount(){
-  }
 
-//coomment 
+//comment
   render() {
+    console.log("RoomList");
     let rooms  = this.state.rooms.map( (room, index) => {
-      return <li key={index}>{room.name}</li>
+      return <li key={index} onClick={ () => this.props.handleRoomClick(room)}>{room.name}</li>
     });
 
     return (
-      <div>
+      <React.Fragment>
       {rooms}
 
       {/*
@@ -58,10 +63,12 @@ class RoomList extends Component {
          <input type="text" value= {this.state.newRoom} onChange={ (e) => this.handleChange(e) } />
             <input type="submit" />
       </form>
-      </div>
+      </React.Fragment>
     );
   }
 
+
+//onClick = {() => this.props.handleRoomClick(55)
 } //end class declaration
 
 export default RoomList;
