@@ -42,8 +42,6 @@ class RoomList extends Component {
 
   }
 
-  componentWillUnmount(){
-  }
 
 //comment
   render() {

@@ -7,41 +7,44 @@ import User from './components/User';
 
 
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB6pdx3FGs-eXrMxNOaHny3HoItdYjWFLQ",
-    authDomain: "bloc-chat-react-389c0.firebaseapp.com",
-    databaseURL: "https://bloc-chat-react-389c0.firebaseio.com",
-    projectId: "bloc-chat-react-389c0",
-    storageBucket: "bloc-chat-react-389c0.appspot.com",
-    messagingSenderId: "518982602301"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyB6pdx3FGs-eXrMxNOaHny3HoItdYjWFLQ",
+  authDomain: "bloc-chat-react-389c0.firebaseapp.com",
+  databaseURL: "https://bloc-chat-react-389c0.firebaseio.com",
+  projectId: "bloc-chat-react-389c0",
+  storageBucket: "bloc-chat-react-389c0.appspot.com",
+  messagingSenderId: "518982602301"
+};
+firebase.initializeApp(config);
 
-  //  not sure about the following
+//  not sure about the following
 //  <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
 
 class App extends Component {
-   constructor(props) {
-      super(props);
-      this.handleRoomClick = this.handleRoomClick.bind(this);
-      this.state = {
-         firebase: firebase,
-         activeRoom: "1",
-         testValue: ""
-      };
+  constructor(props) {
+    super(props);
+    this.handleRoomClick = this.handleRoomClick.bind(this);
+    this.state = {
+      firebase: firebase,
+      activeRoom: "1",
+      testValue: "",
+      user: {}
+    };
 
-    }  //end constructor
+  }  //end constructor
 
 
-//  handleRoomClick(roomId){
+  //  handleRoomClick(roomId){
   //   let clickedRoom = roomId;
   //   this.setState({activeRoom: clickedRoom});
   //   console.log(this.state.activeRoom);
-//  }
+  //  }
 
-
+  setUser(user)  {
+    this.setState({ user: user });
+  }
   handleRoomClick(room){
-  //const ii = index;
+    //const ii = index;
     this.setState({ activeRoom: room });  //this line causes Maximum Update  Depth Exceeded
     //console.log(room);
 
@@ -59,27 +62,24 @@ class App extends Component {
     return (
 
       <div className="App">Bloc Chat
-         <div id='chatroom-column'>
+      <div id='chatroom-column'>
 
-               <ul>
-                  <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick={this.handleRoomClick} />
-               </ul>
+      <ul>
+      <RoomList firebase={firebase}  activeRoom = {this.state.activeRoom} handleRoomClick={this.handleRoomClick} />
+      </ul>
 
-         </div>
+      </div>
 
-         <div id='room-messages-column'>
+      <div id='room-messages-column'>
 
-            <ul>
-               <MessageList firebase={firebase} activeRoom = {this.state.activeRoom} />
-            </ul>
+      <ul>
+      <MessageList firebase={firebase} activeRoom = {this.state.activeRoom} />
+      </ul>
 
-         </div>
+      </div>
          <div>
-            <User  firebase={firebase} className = "signInButton" />
-
-
+         <User  firebase={firebase} className = "signInButton" setUser={(user) => {this.setUser(user)}} user={this.state.user} />
          </div>
-
       </div>
     );// close return
   }//close render
