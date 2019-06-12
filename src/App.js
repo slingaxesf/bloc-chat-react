@@ -3,6 +3,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 
 
 // Initialize Firebase
@@ -71,6 +72,11 @@ class App extends Component {
             <ul>
                <MessageList firebase={firebase} activeRoom = {this.state.activeRoom} />
             </ul>
+
+         </div>
+         <div>
+            <User  firebase={firebase} className = "signInButton" />
+
 
          </div>
 
