@@ -24,8 +24,8 @@ class User extends Component {
   }
 
   onClickHandlerSignOut = () => {
-    console.log("signed out");
-    this.props.firebase.auth().signOut();
+    //console.log("signed out");
+    //this.props.firebase.auth().signOut();
   }
 
   componentDidMount (){

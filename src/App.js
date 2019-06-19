@@ -30,8 +30,8 @@ class App extends Component {
       testValue: "",
       user: {}
     };
-
-  }  //end constructor
+    this.setUser = this.setUser.bind(this);
+  }
 
 
   //  handleRoomClick(roomId){
@@ -78,7 +78,7 @@ class App extends Component {
 
       </div>
          <div>
-         <User  firebase={firebase} className = "signInButton" setUser={(user) => {this.setUser(user)}} user={this.state.user} />
+         <User  firebase={firebase} className = "signInButton" setUser={this.setUser} user={this.state.user} />
          </div>
       </div>
     );// close return
