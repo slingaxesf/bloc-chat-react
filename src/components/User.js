@@ -23,9 +23,9 @@ class User extends Component {
     this.props.firebase.auth().signInWithPopup( provider );
   }
 
-  onClickHandlerSignOut = () => {
-    //console.log("signed out");
-    //this.props.firebase.auth().signOut();
+ onClickHandlerSignOut = () => {
+    console.log("signed out");
+    this.props.firebase.auth().signOut();
   }
 
   componentDidMount (){
@@ -41,10 +41,9 @@ class User extends Component {
     return (
       <div className = "User">
       <form>
-      <input type="button" onClick = {this.onClickHandlerSignIn} value= "Sign In" ></input>
-      <input type="button" onClick = {this.onClickHandlerSignOut} value= "Sign Out" ></input>
-
-      You are: {this.props.user.displayName}
+      <input type="button" onClick={this.onClickHandlerSignIn} value="Sign In" ></input>
+      <input type="button" onClick={this.onClickHandlerSignOut} value="Sign Out" ></input>
+      You are: {this.props.user ? this.props.user.displayName : ""}
       </form>
 
       </div>
